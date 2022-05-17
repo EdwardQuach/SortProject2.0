@@ -43,7 +43,7 @@ function reverseBaseSort(arr) {
     let ele = arr[i];
     if (ele < 1000 && ele >= 100) {
       base3Arr.push(ele);
-    } 
+    }
     if (ele < 100 && ele >= 10) {
       base2Arr.push(ele);
     }
@@ -65,7 +65,20 @@ function reverseBaseSort(arr) {
 }
 
 function frequencySort(arr) {
-  // Your code here
+  let count = {};
+  for (let i = 0; i < arr.length; i++) {
+    let ele = arr[i];
+    if (!count[ele]) {
+      count[ele] = 1
+    } else {
+      count[ele]++
+    }
+  }
+  return arr.sort((a,b) => {
+    if (count[a] > count[b]) return 1;
+    if (count[a] === count[b]) return b - a;
+    if (count[a] < count[b]) return -1;
+  })
 }
 
 module.exports = [
